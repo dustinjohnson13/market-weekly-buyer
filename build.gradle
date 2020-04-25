@@ -1,0 +1,27 @@
+plugins {
+    id "com.github.node-gradle.node" version "2.2.0"
+}
+
+node {
+    download = true
+
+    version = '10.15.0'
+    yarnVersion = '1.13.0'
+}
+
+apply plugin: 'base'
+
+clean.delete << file('node_modules')
+
+task leighAnnsAccount(type: NodeTask, dependsOn: ['yarn_install']) {
+    script = file('index.js')
+    args = [project.property('leighann.schwab.username'), project.property('leighann.schwab.password'), '1823.76']
+}
+
+task dustinsAccount(type: NodeTask, dependsOn: ['yarn_install']) {
+    script = file('index.js')
+    args = [project.property('dustin.schwab.username'), project.property('dustin.schwab.password'), '4197.70']
+}
+
+
+task run(dependsOn: [leighAnnsAccount, dustinsAccount])
