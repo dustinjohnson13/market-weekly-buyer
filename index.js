@@ -181,7 +181,7 @@ const run = async args => {
         const allyCostBasis = args[12]
 
         const lastPrice = await findLastPrice(SPLG, consumerKey, consumerSecret, oauthToken, oauthSecret)
-        const limit = (lastPrice * 1.005).toFixed(2)
+        const limit = (lastPrice * 1.001).toFixed(2)
 
         await buyInAllyAccount(SPLG, consumerKey, consumerSecret, oauthToken, oauthSecret, allyCostBasis, lastPrice, limit)
         await buyInSchwabAccount(args[2], args[3], args[4], lastPrice, limit)
