@@ -92,6 +92,8 @@ const buyInAllyAccount = async (symbol, consumerKey, consumerSecret, accessToken
     })
 }
 
+const delay = time => new Promise(resolve => setTimeout(resolve, time))
+
 const buyInSchwabAccount = async (username, password, costBasis, lastPrice, limit) => {
     console.log(`Using username=${username}, password=${password}, cost basis=${costBasis}, and limit=${limit}`)
     let browser
@@ -112,6 +114,8 @@ const buyInSchwabAccount = async (username, password, costBasis, lastPrice, limi
         await page.goto(orderEntryUrl, waitOptions)
 
         await orderDetails(page, SPLG, shares, limit)
+        await page.click('.checkbox-affirm')
+        await delay(1000)
         await page.click('#btnConfirm')
     } catch (e) {
         throw e
