@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer')
 const oauth = require('oauth')
 
-const waitOptions = {waitUntil: 'networkidle0', timeout: 90000}
+const waitOptions = {waitUntil: 'networkidle0', timeout: 180000}
 const orderEntryUrl = 'https://client.schwab.com/Areas/Trade/Stocks/Entry.aspx?'
 const schwabSignInUrl = 'https://lms.schwab.com/Login?ClientId=schwab-secondary&StartInSetId=1&enableAppD=false&RedirectUri=client.schwab.com/Login/Signon/AuthCodeHandler.ashx'
 
